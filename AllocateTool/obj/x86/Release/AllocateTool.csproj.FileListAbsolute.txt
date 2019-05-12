@@ -1,0 +1,10 @@
+D:\VS2017WorkSpace\AutoAllocateTool\AllocateTool\bin\x86\Release\AllocateTool.exe.config
+D:\VS2017WorkSpace\AutoAllocateTool\AllocateTool\bin\x86\Release\AllocateTool.exe
+D:\VS2017WorkSpace\AutoAllocateTool\AllocateTool\bin\x86\Release\AllocateTool.pdb
+D:\VS2017WorkSpace\AutoAllocateTool\AllocateTool\obj\x86\Release\AllocateTool.csprojAssemblyReference.cache
+D:\VS2017WorkSpace\AutoAllocateTool\AllocateTool\obj\x86\Release\AllocateTool.Form1.resources
+D:\VS2017WorkSpace\AutoAllocateTool\AllocateTool\obj\x86\Release\AllocateTool.Properties.Resources.resources
+D:\VS2017WorkSpace\AutoAllocateTool\AllocateTool\obj\x86\Release\AllocateTool.csproj.GenerateResource.cache
+D:\VS2017WorkSpace\AutoAllocateTool\AllocateTool\obj\x86\Release\AllocateTool.csproj.CoreCompileInputs.cache
+D:\VS2017WorkSpace\AutoAllocateTool\AllocateTool\obj\x86\Release\AllocateTool.exe
+D:\VS2017WorkSpace\AutoAllocateTool\AllocateTool\obj\x86\Release\AllocateTool.pdb
