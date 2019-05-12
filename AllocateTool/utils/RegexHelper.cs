@@ -76,7 +76,7 @@ namespace AllocateTool.utils
         public static string ReplaceStrByRegex(string regexStr, string context,string replaceStr)
         {
 
-            string returnStr = "";
+            string returnStr = context;
             Regex regex = new Regex(regexStr, RegexOptions.IgnoreCase);
             MatchCollection matchs = regex.Matches(context);
             if (matchs.Count>0) { 

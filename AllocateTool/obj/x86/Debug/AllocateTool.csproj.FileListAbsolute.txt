@@ -53,3 +53,17 @@ D:\VS2017WorkSpace\AutoAllocateToolTest-EMF\AllocateTool\bin\x86\Debug\nunit.fra
 D:\VS2017WorkSpace\AutoAllocateToolTest-EMF\AllocateTool\bin\x86\Debug\nunit.framework.pdb
 D:\VS2017WorkSpace\AutoAllocateToolTest-EMF\AllocateTool\bin\x86\Debug\nunit.framework.xml
 D:\VS2017WorkSpace\AutoAllocateToolTest-EMF\AllocateTool\obj\x86\Debug\AllocateTool.csproj.CopyComplete
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\bin\x86\Debug\AllocateTool.exe.config
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\bin\x86\Debug\AllocateTool.exe
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\bin\x86\Debug\AllocateTool.pdb
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\bin\x86\Debug\nunit.framework.dll
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\bin\x86\Debug\nunit.framework.pdb
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\bin\x86\Debug\nunit.framework.xml
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\obj\x86\Debug\AllocateTool.csprojAssemblyReference.cache
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\obj\x86\Debug\AllocateTool.ServerForm.resources
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\obj\x86\Debug\AllocateTool.Properties.Resources.resources
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\obj\x86\Debug\AllocateTool.csproj.GenerateResource.cache
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\obj\x86\Debug\AllocateTool.csproj.CoreCompileInputs.cache
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\obj\x86\Debug\AllocateTool.csproj.CopyComplete
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\obj\x86\Debug\AllocateTool.exe
+D:\VS2017WorkSpace\AutoAllocateTool-Test-EMF\AllocateTool\obj\x86\Debug\AllocateTool.pdb

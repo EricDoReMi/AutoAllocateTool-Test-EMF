@@ -150,16 +150,26 @@ namespace AllocateTool.control
                 record.M_statu = "0";
                 int? preAsignEmpId = 0;
                 
-                record.M_asign = preAsignEmpId;
-            
+                
 
-                preAsignEmpId = FindRecordByRequest("*"+RegexHelper.ReplaceStrByRegex(@"RE:|FW:|回复：", record.M_subject, "").Substring(0,10)+"*");
+            string subjectStrGet = RegexHelper.ReplaceStrByRegex(@"RE:|FW:|回复：", record.M_subject, "");
+
+
+                preAsignEmpId = FindRecordByRequest("%"+ subjectStrGet.Substring(0,subjectStrGet.Length)+"%");
+         
+
                 if (preAsignEmpId != null)
                 {
                     record.M_statu = "4";
+                    record.M_asign = preAsignEmpId;
+                }
+                else
+                {
+                    record.M_statue = "0";
+                    record.M_asign = 0;
                 }
 
-                record.M_asign = preAsignEmpId;
+           
            
                 string saveMailName = record.M_requestID + "-" + new Random().GetHashCode().ToString() + myItem.ReceivedTime.ToString("yyyyMMddHHmmss") + mailNum.ToString();//邮件保存在公共盘上的名字
 
@@ -186,8 +196,11 @@ namespace AllocateTool.control
             List<Emp> emps = FindAllEmpsForAllocate();
             foreach (Emp emp in emps)
             {
-                subjectStr.Contains(emp.M_keyword.ToUpper());
-                return emp.M_keyword;
+
+                if (emp.M_keyword.Length>0 && subjectStr.ToUpper().Contains(emp.M_keyword.ToUpper())) {
+                    return emp.M_keyword;
+                }
+                
             }
             return "";
         }
