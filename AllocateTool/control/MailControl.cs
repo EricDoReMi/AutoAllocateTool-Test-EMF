@@ -24,33 +24,20 @@ namespace AllocateTool.control
         /// </summary>
         public void TransferMail(){
 
-             if (MailHelper.myFolderInbox.Items.Count > 0)
-                {
                     
-                    
-                    foreach (Outlook.MailItem myItem in MailHelper.myFolderInbox.Items)
+             foreach (Outlook.MailItem myItem in MailHelper.myFolderInbox.Items)
                     {
                        
                         string mailAddress = myItem.SenderEmailAddress.Trim();
                         string saveMailItemPath; //将邮件存到公共盘的路径  
-                    //若是系统发来的邮件就屏蔽
-                    if (!Regex.IsMatch(mailAddress.ToUpper(), @"G\.SERVICENOW|REQUESTIT\.NO-REPLY|NEW\.SERVICE|REPLY"))
-
-                    {
+           
 
                         //ForwardMailItem(myItem);//向服务器邮箱发送邮件
                         AddMailToDB(myItem,out saveMailItemPath);//将接收到的邮件信息添加到数据库
                         SaveMailItemToDisk(myItem,saveMailItemPath);//将邮件保存到公共盘
                         myItem.Move(MailHelper.mySourceFolder);//将邮件移动到了Source文件夹
-                                                              
-                    }
-
-                    else
-                    {
-                        myItem.Move(MailHelper.myOutFolder);
-                    }
-  
-                    }
+                                                       
+                    
                 }
             
         }
@@ -119,7 +106,7 @@ namespace AllocateTool.control
         /// <param name="mailSaveNameFilePath">保存邮件的完整路径</param>
         private void SaveMailItemToDisk(Outlook.MailItem myItem,string mailSaveNameFilePath) {
  
-                myItem.SaveAs(mailSaveNameFilePath, Microsoft.Office.Interop.Outlook.OlInspectorClose.olPromptForSave);
+                myItem.SaveAs(mailSaveNameFilePath);
            
         }
 
@@ -155,7 +142,7 @@ namespace AllocateTool.control
             string subjectStrGet = RegexHelper.ReplaceStrByRegex(@"RE:|FW:|回复：", record.M_subject, "");
 
 
-                preAsignEmpId = FindRecordByRequest("%"+ subjectStrGet.Substring(0,subjectStrGet.Length)+"%");
+                preAsignEmpId = FindRecordByRequest(record,"%"+ subjectStrGet.Substring(0,subjectStrGet.Length)+"%");
          
 
                 if (preAsignEmpId != null)
@@ -171,7 +158,7 @@ namespace AllocateTool.control
 
            
            
-                string saveMailName = record.M_requestID + "-" + new Random().GetHashCode().ToString() + myItem.ReceivedTime.ToString("yyyyMMddHHmmss") + mailNum.ToString();//邮件保存在公共盘上的名字
+                string saveMailName =  new Random().GetHashCode().ToString() + myItem.ReceivedTime.ToString("yyyyMMddHHmmss") + mailNum.ToString();//邮件保存在公共盘上的名字
 
                 saveMailNamePath = MailHelper.MailFolder + saveMailName + ".msg";
                 record.M_filePath = saveMailNamePath;
@@ -211,7 +198,7 @@ namespace AllocateTool.control
             List<Emp> emps = null;
             try
             {
-                OleDbConnection con = empDao.Begin();
+                OleDbConnection con = empDao.BeginKeyword();
                 emps = empDao.FindAllEmpDAO(con);
                 empDao.Commit();
                 return emps;
@@ -235,10 +222,19 @@ namespace AllocateTool.control
         /// </summary>
         /// <param name="subjectStr"></param>
         /// <returns></returns>
-        private int? FindRecordByRequest(string subjectStr){
+        private int? FindRecordByRequest(Record record,string subjectStr){
             try
             {
-                OleDbConnection con = recordDao.Begin();
+                OleDbConnection con = null;
+                if (record.M_requestID.Length > 0)
+                {
+                    con = recordDao.BeginKeyword();
+                }
+                else
+                {
+                    con = recordDao.Begin();
+                }
+                
                 int? asignId=recordDao.FindRecordByRequestIDDAO(con, subjectStr);
                 recordDao.Commit();
                 return asignId;
@@ -334,7 +330,15 @@ namespace AllocateTool.control
         private void AddRecordToDB(Record record) {
             try
             {
-                OleDbConnection con = recordDao.Begin();
+                OleDbConnection con = null;
+                if (record.M_requestID.Length > 0)
+                {
+                    con = recordDao.BeginKeyword();
+                }
+                else {
+                    con = recordDao.Begin();
+                }
+                
                 recordDao.AddRecordItemDAO(con,record);
                 recordDao.Commit();
                 

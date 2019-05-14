@@ -128,6 +128,15 @@ namespace AllocateTool.dao
             
         }
 
+        public OleDbConnection BeginKeyword()
+        {
+            OleDbConnection conn = OLDBHelper.GetKeywordConnection();
+            conn.Open();
+            trans = conn.BeginTransaction();
+            return conn;
+
+        }
+
         public void Commit() {
             trans.Commit();
         }
